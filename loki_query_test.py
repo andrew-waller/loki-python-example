@@ -1,7 +1,5 @@
 from loki import Loki
 import json
-import pandas
-from pandas.io.json import json_normalize
 from dotenv import load_dotenv
 import os
 
@@ -17,13 +15,10 @@ result = loki.data.query("urn:com:saplingdata:covid19:model:queries:covid_policy
 if not result.is_success():
   raise Exception(result.get_error())
 
-# print(result.get_response().status_code)
-# print(result.get_response().content)
-# print(result.get_response().json())
-# print(result.get_response().json())
+print(result.get_response().status_code)
+print(result.get_response().content)
+print(result.get_response().json())
 
-results_json = result.get_response().json()
-print(results_json)
-# for item in result.to_array():
-#   for value in item:
-#     print(value)
+for item in result.to_array():
+  for value in item:
+    print(value)
